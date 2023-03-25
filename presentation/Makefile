@@ -4,15 +4,17 @@
 
 filename=cposc2023
 
+.PHONY: all clean-artifacts pdf xe-pdf text view clean
+
 all: pdf clean-artifacts
 
 clean-artifacts:
 	@rm -f ${filename}.{ps,log,aux,html,out,dvi,bbl,blg,snm,toc,nav,vrb}
 
-pdf: 
-	pdflatex -halt-on-error ${filename} 
+pdf:
+	pdflatex -halt-on-error -interaction=nonstopmode ${filename}
 	# Run twice to update Table-of-Contents and other items
-	pdflatex -halt-on-error ${filename} 
+	pdflatex -halt-on-error -interaction=nonstopmode ${filename}
 
 xe-pdf:
 	xelatex -halt-on-error ${filename}
@@ -24,10 +26,12 @@ html:
 	@#latex2html -split +0 -info "" -no_navigation ${filename}
 	htlatex ${filename}
 
-view:
-	while inotifywait --event modify,move_self,close_write ${filename}.tex; \
-		do pdflatex -halt-on-error ${filename} && xelatex -halt-on-error \
-		${filename}; done
+# The following doesn't quite work as expected
+#view:
+#	while inotifywait --event modify,move_self,close_write ${filename}.tex; \
+#		do \
+#		pdflatex -halt-on-error -interaction=nonstopmode ${filename}; \
+#		done
 
 clean:
 	rm -f ${filename}.{ps,pdf,log,aux,html,out,dvi,bbl,blg,snm,toc,nav,vrb}
