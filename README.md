@@ -59,7 +59,7 @@ own IoT sensors.
 
 ## Files in this Repository:
 
-- `presentation/cposc2020.tex`: LaTeX Beamer presentation files
+- `presentation/cposc2023.tex`: LaTeX Beamer presentation files
 
 ## Making the presentation
 
