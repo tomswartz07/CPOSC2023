@@ -4,6 +4,7 @@
 \usepackage{tikz}
 \usepackage{url}
 \usepackage{xcolor}
+\usepackage{qrcode}
 \usepackage{xmpmulti}
 \usetikzlibrary{shapes,arrows}
 \hypersetup{pdfstartview={Fit}} % Fit the presentation to the window when first displayed
@@ -25,7 +26,7 @@
 \begin{document}
 
 % Title Page
-{\usebackgroundtemplate{\includegraphics[width=1.00\paperwidth,keepaspectratio]{images/close-up-computer-ram.jpg}}
+{\usebackgroundtemplate{\includegraphics[width=1.00\paperwidth,keepaspectratio]{images/yellow-board.jpg}}
 \begin{frame}[plain]
     \begin{TitleBox}
         \begin{center}
@@ -49,7 +50,7 @@
       {\huge Tom Swartz}
       \vfill
       \begin{itemize}[<+->]
-        \item{Crunchy Data \\ Associate Director of Support} 
+        \item{Crunchy Data \\ Associate Director of Support}
         \item{Hobbyist interests in `Big Data', IoT, RF Communications}
         \item{I've got some pretty specific hyperfixations}
       \end{itemize}
@@ -94,27 +95,48 @@
 \end{frame}
 
 % Install Methods
-\subsubsection{Install Methods}
-\frame{Install Methods}
+\subsection{Install Methods}
+\begin{frame}[fragile]
+  \frametitle{Installation Methods}
+  \begin{columns}[]
+    \begin{column}[T]{0.45\paperwidth}
+      \begin{enumerate}%[<+->]
+        \item{Home Assistant Yellow}
+        \item{Docker Container}
+        \item{Dedicated Raspberry Pi \tiny{(Good luck finding one!)}}
+        \item{Running as a background app on other hosts/servers}
+      \end{enumerate}
+      \emph{Worth noting that certain install methods lack certain features (such as third party add-ons)}
+    \end{column}
+    \begin{column}[T]{0.45\paperwidth}
+      \includegraphics[height=6cm,keepaspectratio]{images/yellow.jpg}
+    \end{column}
+  \end{columns}
+\end{frame}
 % Dashboards
-\subsubsection{Dashboards}
-\frame{Dashboards}
+\subsection{Dashboards}
+\frame{\subsectionpage}
 % Integrations
-\subsubsection{Integrations}
-\frame{Integrations}
+\subsection{Integrations}
+\frame{\subsectionpage}
 % Devices and Entities
-\subsubsection{Devices and Entities}
-\frame{Devices and Entities}
+\subsection{Devices and Entities}
+\frame{\subsectionpage}
 % Automations
-\subsubsection{Automations}
-\frame{Automations}
+\subsection{Automations}
+\frame{\subsectionpage}
 
 \section{Security}
 \frame{\sectionpage}
+% Obvious need
+\subsection{The Elephant in the Room}
+\frame{\subsectionpage}
+% How it compares; local control
+\subsection{How does it compare?}
+\frame{\subsectionpage}
 
 \section{Usage and Demo (Part 1)}
 \frame{\sectionpage}
-
 % Demo of H-A
 \subsection{Demo of Home-Assistant}
 \frame{\subsectionpage}
@@ -123,13 +145,71 @@
 \frame{\sectionpage}
 \subsection{ESPHome}
 \frame{\subsectionpage}
+\begin{frame}[fragile]
+  \frametitle{What is ESPHome?}
+  \begin{columns}[]
+    \begin{column}[T]{0.45\paperwidth}
+      \begin{itemize}%[<+->]
+        \item{Sponsored and directed by same group as HomeAssistant}
+        \item{Tight integrations with HomeAssistant}
+        \item{Easy to set up and use}
+        \item{Allow for specific, inexpensive, widespread sensors}
+     \end{itemize}
+    \end{column}
+    \begin{column}[T]{0.45\paperwidth}
+      \includegraphics[width=0.45\paperwidth,keepaspectratio]{images/esp.png}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \subsection{Platforms}
-\frame{\subsectionpage}
 % Platforms
+\begin{frame}[fragile]
+  \frametitle{Building Sensor Devices: The Controller}
+  \begin{columns}[]
+    \begin{column}[T]{0.45\paperwidth}
+      ESPHome runs on easily obtained microcontroller hardware.
+      \vfill
+      Typical cost for an entire USB-powered sensor can be as low as \$5
+      \begin{enumerate}%[<+->]
+        \item{ESP32}
+        \item{ESP8266}
+        \item{Raspberry Pi RP2040 \tiny{(\emph{Slightly} easier finding one!)}}
+      \end{enumerate}
+    \end{column}
+    \begin{column}[T]{0.45\paperwidth}
+      \includegraphics[width=0.45\paperwidth,keepaspectratio]{images/esp.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 % Devices/Components
 \subsection{Devices/Components}
-\frame{\subsectionpage}
+\begin{frame}[fragile]
+  \frametitle{Building Sensor Devices: The Sensors}
+  \begin{columns}[]
+    \begin{column}[T]{0.45\paperwidth}
+      Types of `sensor components':
+      \begin{itemize}%[<+->]
+        \item{Air Quality}
+        \item{Digital Signals}
+        \item{Distance}
+        \item{Electricity/Power}
+        \item{Environmental}
+        \item{Light}
+        \item{Magnetic}
+        \item{Motion}
+        \item{Weight}
+      \end{itemize}
+    \end{column}
+    \begin{column}[T]{0.45\paperwidth}
+      The general aim of ESPHome is to use `jellybean' components\\
+      Easy to get, inexpensive sensors, wire up to (usually) existing pins
+      \vspace{1cm}
+      \includegraphics[width=0.45\paperwidth,keepaspectratio]{images/esp.png}
+    \end{column}
+  \end{columns}
+\end{frame}
 % Configuration
 \subsection{Configuration}
 \frame{\subsectionpage}
@@ -174,18 +254,26 @@
 \end{frame}
 \begin{frame}[plain,fragile]
   \frametitle{References}
-  Code for this presentation, as well as some sample device manifests and other
-  information can be found on GitHub and GitLab.
-  \begin{itemize}
-    \item{\href{https://github.com/tomswartz07/CPOSC2023}{https://github.com/tomswartz07/CPOSC2023}}
-    \item{\href{https://gitlab.com/tom.swartz07/CPOSC2023}{https://gitlab.com/tom.swartz07/CPOSC2023}}
-  \end{itemize}
-  \vfill
-  \begin{enumerate}
-    \item{\href{https://www.home-assistant.io/}{https://www.home-assistant.io/}}
-    \item{\href{https://esphome.io/}{https://esphome.io/}}
-    \item{\href{https://www.troyhunt.com/iot-unravelled-part-1-its-a-mess-but-then-theres-home-assistant/}{https://www.troyhunt.com/ IoT Unravelled Series}}
-  \end{enumerate}
+  \begin{columns}[]
+    \begin{column}[T]{0.55\paperwidth}
+      Code for this presentation, as well as some sample device manifests and other
+      information can be found on GitHub and GitLab.
+      \begin{itemize}
+        \item{\href{https://github.com/tomswartz07/CPOSC2023}{https://github.com/tomswartz07/CPOSC2023}}
+        \item{\href{https://gitlab.com/tom.swartz07/CPOSC2023}{https://gitlab.com/tom.swartz07/CPOSC2023}}
+      \end{itemize}
+      \vfill
+      Further Reading:
+      \begin{enumerate}
+        \item{\href{https://www.home-assistant.io/}{https://www.home-assistant.io/}}
+        \item{\href{https://esphome.io/}{https://esphome.io/}}
+        \item{\href{https://www.troyhunt.com/iot-unravelled-part-1-its-a-mess-but-then-theres-home-assistant/}{https://www.troyhunt.com/ IoT Unravelled Series}}
+      \end{enumerate}
+    \end{column}
+    \begin{column}[T]{0.35\paperwidth}
+      \qrcode[height=1.5in]{https://github.com/tom.swartz07/CPOSC2023/}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \end{document}
