@@ -1,0 +1,22 @@
+esphome:
+  name: luminance
+esp32:
+  board: esp32doit-devkit-v1
+  framework:
+    type: arduino
+api: # Enables connection to Home Assistant API
+  encryption:
+    key: !secret haas_encryption_key
+ota: # Allows over-the-air updates
+  password: !secret ota_password
+wifi:
+  networks:
+  - ssid: !secret wifi_ssid_main
+    password: !secret wifi_password_main
+i2c: # I2C setup for HB1750 device
+  sda: GPIO21
+  scl: GPIO22
+sensor: # https://esphome.io/components/sensor/bh1750.html
+- platform: bh1750
+  name: "BH1750 Illuminance"
+  address: 0x23

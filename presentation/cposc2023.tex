@@ -52,6 +52,7 @@
       \begin{itemize}[<+->]
         \item{Crunchy Data \\ Associate Director of Support}
         \item{Hobbyist interests in `Big Data', IoT, RF Communications}
+        \item{Prior CPOSC talks on RF comms/SDR \& homemade PCBs}
         \item{I've got some pretty specific hyperfixations}
       \end{itemize}
     \end{column}
@@ -62,10 +63,8 @@
 \end{frame}
 
 \section{Home Assistant (and Friends)}
-\frame{\sectionpage}
-
 \begin{frame}
-  \frametitle{Summary of Applications}
+  \frametitle{Summary}
   We'll be reviewing the following topics, and how they relate to Home Automation
   \begin{enumerate}
     \item{Home Assistant}
@@ -86,6 +85,7 @@
         \item{A practical application for consolidating software, apps, and tool-sets that many people already use}
         \item{Needs for better usability, security, and maintenance}
         \item{A solid use case for HomeLab equipment, for nerd cred}
+        \item{It's Open Source!}
      \end{itemize}
     \end{column}
     \begin{column}[T]{0.45\paperwidth}
@@ -95,7 +95,6 @@
 \end{frame}
 
 % Install Methods
-\subsection{Install Methods}
 \begin{frame}[fragile]
   \frametitle{Installation Methods}
   \begin{columns}[]
@@ -113,18 +112,105 @@
     \end{column}
   \end{columns}
 \end{frame}
+
+\subsection{Components and Overview}
+\begin{frame}[fragile]
+  \frametitle{Components and Overview}
+  Home Assistant is made of several parts:
+  \begin{enumerate}%[<+->]
+    \item{Dashboards}
+    \item{Integrations}
+    \item{Devices and Entities}
+    \item{Automations}
+  \end{enumerate}
+\end{frame}
+
 % Dashboards
-\subsection{Dashboards}
-\frame{\subsectionpage}
+\begin{frame}[fragile]
+  \frametitle{Dashboards}
+  Home Assistant's way of showing what's happening
+  \vfill
+  \begin{columns}[]
+    \begin{column}[T]{0.45\paperwidth}
+      \begin{enumerate}%[<+->]
+        \item{Per-User Dashboards}
+        \item{Show live and historical data}
+      \end{enumerate}
+      \emph{lorem ipsum}
+    \end{column}
+    \begin{column}[T]{0.45\paperwidth}
+      \includegraphics[height=6cm,keepaspectratio]{images/yellow.jpg}
+    \end{column}
+  \end{columns}
+\end{frame}
 % Integrations
-\subsection{Integrations}
-\frame{\subsectionpage}
-% Devices and Entities
-\subsection{Devices and Entities}
-\frame{\subsectionpage}
-% Automations
-\subsection{Automations}
-\frame{\subsectionpage}
+\begin{frame}[fragile]
+  \frametitle{Integrations}
+  Arguably, the thing that makes Home Assistant so lucrative
+  \vfill
+  \begin{columns}[]
+    \begin{column}[T]{0.45\paperwidth}
+      \begin{enumerate}%[<+->]
+        \item{All devices are community-driven}
+        \item{2424+ total integrations supported}
+        \item{Everything from 3D Printers to Vacuum cleaners}
+      \end{enumerate}
+    \end{column}
+    \begin{column}[T]{0.45\paperwidth}
+      \includegraphics[height=6cm,keepaspectratio]{images/yellow.jpg}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}[fragile]
+  \frametitle{Devices and Entities}
+  The nuts and bolts of Home Assistant
+  \vfill
+  \begin{columns}[]
+    \begin{column}[T]{0.45\paperwidth}
+      \begin{description}%[<+->]
+        \item[Devices]{A physical (or logical) group of sensors and inputs. For example, a motion sensor is a device}
+        \item[Entities]{Any type of `data point' for a Device. For example, a motion sensor's \emph{Entities} can be: `Motion Status', `Battery Level', `Light Level'}
+      \end{description}
+    \end{column}
+    \begin{column}[T]{0.45\paperwidth}
+      \includegraphics[height=6cm,keepaspectratio]{images/yellow.jpg}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}[fragile]
+  \frametitle{Automations}
+  Home Assistant's key features are Automations
+  \vfill
+  \begin{description}%[<+->]
+    \item[Trigger]{Actions which will start the Automation action}
+    \item[Conditions]{Optional conditions which limit when/where/how the automation will run}
+    \item[Actions]{Items to perform if conditions are met}
+  \end{description}
+  \vfill
+  It's kind of like $cron$, but for Internet of Things!
+\end{frame}
+\begin{frame}[fragile]
+  \frametitle{Example Automations}
+  Home Assistant performs Automations which allow for endless possibilities, but here are some examples:
+  \vfill
+  \begin{description}%[<+->]
+    \item[Christmas Lights]{Turn on all of the Christmas lights 30 minutes before the sun sets}
+    \item[Extra doorbell coverage]{Home Audio speakers announce if the doorbell is ringing}
+    \item[Never forget to close the garage]{Automatically close the garage doors if no one is home}
+    \item[Fix a dark office]{Turn on office lamps if it gets cloudy/dark}
+  \end{description}
+\end{frame}
+\begin{frame}[fragile]
+  \frametitle{So that means\ldots}
+  \begin{columns}[]
+    \begin{column}[T]{0.45\paperwidth}
+      \includegraphics[width=0.4\paperwidth,keepaspectratio]{images/amazon-button.jpg}
+    \end{column}
+    \begin{column}[T]{0.45\paperwidth}
+      \includegraphics[width=0.45\paperwidth,keepaspectratio]{images/pizza.png}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \section{Security}
 \frame{\sectionpage}
@@ -134,10 +220,19 @@
 % How it compares; local control
 \subsection{How does it compare?}
 \frame{\subsectionpage}
+\begin{frame}[fragile]
+  \frametitle{Integration Classifications}
+  Classifying the Internet of Things
+  \vfill
+  \begin{description}%[<+->]
+    \item[Local Push]{Gold Standard, entirely local control directly from Home Assistant}
+    \item[Local Poll]{Home Assistant direct read/write, but on-device updates may be delayed}
+    \item[Cloud Push]{Integration of this device happens via the cloud and requires an active internet connection}
+    \item[Cloud Poll]{Delayed integration of this device happens via the cloud and requires an active internet connection}
+  \end{description}
+\end{frame}
 
 \section{Usage and Demo (Part 1)}
-\frame{\sectionpage}
-% Demo of H-A
 \subsection{Demo of Home-Assistant}
 \frame{\subsectionpage}
 
@@ -178,7 +273,7 @@
       \end{enumerate}
     \end{column}
     \begin{column}[T]{0.45\paperwidth}
-      \includegraphics[width=0.45\paperwidth,keepaspectratio]{images/esp.png}
+      \includegraphics[width=0.45\paperwidth,keepaspectratio]{images/esp32-ada.png}
     \end{column}
   \end{columns}
 \end{frame}
@@ -189,7 +284,7 @@
   \frametitle{Building Sensor Devices: The Sensors}
   \begin{columns}[]
     \begin{column}[T]{0.45\paperwidth}
-      Types of `sensor components':
+      Types of common `sensor components':
       \begin{itemize}%[<+->]
         \item{Air Quality}
         \item{Digital Signals}
@@ -203,25 +298,60 @@
       \end{itemize}
     \end{column}
     \begin{column}[T]{0.45\paperwidth}
-      The general aim of ESPHome is to use `jellybean' components\\
-      Easy to get, inexpensive sensors, wire up to (usually) existing pins
-      \vspace{1cm}
-      \includegraphics[width=0.45\paperwidth,keepaspectratio]{images/esp.png}
+      \includegraphics[width=0.45\paperwidth,keepaspectratio]{images/bh1750-ada.png}
     \end{column}
   \end{columns}
 \end{frame}
 % Configuration
 \subsection{Configuration}
-\frame{\subsectionpage}
+\begin{frame}[fragile]
+  \frametitle{Building Sensor Devices: Putting It All Together}
+  \begin{columns}[]
+    \begin{column}[T]{0.45\paperwidth}
+      A typical ESPHome config contains the following sections:
+      \begin{enumerate}%[<+->]
+        \item{Device name}
+        \item{Board/Controller Definition}
+        \item{WiFi Info}
+        \item{Sensor Connection Setup}
+        \item{Sensor Definition}
+      \end{enumerate}
+    \end{column}
+    \begin{column}[T]{0.45\paperwidth}
+      Example code configuring a custom light level sensor:
+      \includegraphics[width=0.45\paperwidth,keepaspectratio]{images/luminance.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Usage and Demo (Part 2)}
 % Demo of ESPHome
 \subsection{Demo of ESPHome}
 \frame{\subsectionpage}
-% Showing ESP Devices in H-A
 \subsection{ESPHome devices in Home-Assistant}
-\frame{\subsectionpage}
-\section{Usage and Demo (Part 2)}
-\frame{\sectionpage}
-\subsection{Another Demo}
+\begin{frame}[fragile]
+  \frametitle{Luminance Driven Light Switch}
+  Home Assistant performs an Automation which does the following:
+  \begin{enumerate}%[<+->]
+    \item{Trigger}
+      \begin{enumerate}
+        \item{1.5 hours before the sun sets}
+        \item{The time is 8am Eastern}
+        \item{The BH1750 light sensor triggers an event}
+      \end{enumerate}
+    \item{Conditions}
+      \begin{enumerate}
+        \item{Time between 8am and 5pm Eastern, on a weekday}
+        \item{The BH1750 sensor has been `dim' for 15 minutes}
+        \item{My lamps are already off}
+      \end{enumerate}
+    \item{Actions}
+      \begin{enumerate}
+        \item{Turn on Office Table Lamp}
+        \item{Turn on Desk Lamp}
+      \end{enumerate}
+  \end{enumerate}
+\end{frame}
 
 \section{Wrapping Up}
 \frame{\sectionpage}
@@ -229,8 +359,8 @@
 \begin{frame}
   \frametitle{Key Takeaways}
   \begin{itemize}[<+->]
-    \item{Creating your own source of constantly refreshing data for testing purposes is easy, inexpensive, and a great learning experience.}
-    \item{If nothing else, you can experiment with a variety of different data sources for PostgreSQL.}
+    \item{Home Assistant is a pretty neat central, locally controlled, home automation system}
+    \item{Creating your own sensors and doing useful things with them is very easy and inexpensive}
   \end{itemize}
 \end{frame}
 
